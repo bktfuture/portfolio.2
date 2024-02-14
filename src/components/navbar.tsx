@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { useAnimate, motion, AnimationScope } from 'framer-motion';
 import { FiMenu, FiArrowUpRight } from 'react-icons/fi';
 
-export const GlassNavigation = () => {
+export const NavBar = () => {
 	const [hovered, setHovered] = useState(false);
 	const [menuOpen, setMenuOpen] = useState(false);
 
@@ -12,15 +12,14 @@ export const GlassNavigation = () => {
 	return (
 		<nav
 			ref={navRef}
-			className="glass-nav fixed left-0 right-0 top-0 z-10 mx-auto max-w-fit overflow-hidden border-[1px] border-blue-50/10 bg-gradient-to-br from-white/20 to-white/10 backdrop-blur md:left-6 md:right-6 md:top-6 md:rounded-full"
+			className="fixed left-0 right-0 top-0 z-10 mx-auto max-w-fit overflow-hidden backdrop-blur md:left-6 md:right-6 md:top-6 md:rounded-full"
 		>
-			<div className="glass-nav flex items-center justify-evenly px-9 py-3">
+			<div className=" flex items-center justify-evenly px-9 py-1">
 				<Links />
 			</div>
 			<button
 				onClick={() => setMenuOpen((pv) => !pv)}
-				className="ml-2 block scale-100 text-3xl text-white/90 transition-all hover:scale-105 hover:text-white active:scale-95 md:hidden"
-			>
+				className="ml-2 block scale-100 text-3xl text-white/90 transition-all hover:scale-105 hover:text-white active:scale-95 md:hidden">
 				<FiMenu />
 			</button>
 
@@ -30,11 +29,11 @@ export const GlassNavigation = () => {
 };
 
 const Links = () => (
-	<div className="hidden items-center gap-2 md:flex">
-		<GlassLink text="About me" />
-		<GlassLink text="Portfolio" />
-		<GlassLink text="Resume" />
-		<GlassLink text="Contact" />
+	<div className="hidden items-center gap-2 md:flex font-bold">
+		<GlassLink text="about me" />
+		<GlassLink text="portfolio" />
+		<GlassLink text="resume" />
+		<GlassLink text="contact" />
 	</div>
 );
 
@@ -64,15 +63,15 @@ const MobileMenu = ({ menuOpen }: { menuOpen: boolean }) => {
 			}}
 			className="block overflow-hidden md:hidden"
 		>
-			<div className="flex items-center justify-between px-4 pb-4">
-				<div className="flex items-center gap-3">
-					<TextLink text="About Me" />
-					<TextLink text="Portfolio" />
-					<TextLink text="Contact" />
+			<div className="flex items-center justify-between px-4 pb-4 font-bold">
+				<div className="flex items-center gap-3 ">
+					<TextLink  text="about Me" />
+					<TextLink text="portfolio" />
+					<TextLink text="contact" />
 				</div>
 			</div>
 		</motion.div>
 	);
 };
 
-export default GlassNavigation;
+export default NavBar;
