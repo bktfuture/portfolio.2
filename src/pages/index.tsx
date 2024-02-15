@@ -2,25 +2,73 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import { Open_Sans } from 'next/font/google';
 import { NavBar } from '@/components/navbar';
+import { easeIn, easeInOut, motion } from 'framer-motion';
+import { GiHidden } from 'react-icons/gi';
+
 
 const inter = Inter({ subsets: ['latin'] });
 const openSans = Open_Sans({ subsets: ['latin'] });
+
+
+const container = {
+	show: {
+		transition: {
+			staggerChildren: 0.25,
+		},
+	},
+};
+
+const item = {
+	hidden: {
+		opacity: 0,
+		y: 100,
+		scale: .8,
+	},
+	show: {
+		opacity: 1,
+		y: 0,
+		scale: 1,
+
+		transition: {
+			duration: .35,
+			
+		}
+	},
+}
+
+const letterAnimation = {
+	initial: {
+		y: -400,
+	},
+	animate: {
+		y: 0,
+		transition: {
+			duration: 2.25,
+			ease: [0.6, 0.01, -0.05, 0.95],
+		}
+	}
+
+}
+
 
 export default function Home() {
 	return (
 		<main className={`flex bg-[#231F25]  min-h-screen flex-col  px-9 pt-9 pb-1 ${inter.className}`}>
 			<NavBar />
-			<h1 className="mt-20 text-[#C8B2B3] font-bold text-9xl mt-12 md:text-8xl">aiturgan talant</h1>
-			<h1 className="mt-20 text-[#A6A0A0] font-bold text-[7.8rem] leading-none mt-0 flex justify-center md:text-[5.9rem] md:leading-3">
-				software engineer
-			</h1>
-			<h1 className="mt-20 text-[#626F63] font-bold text-[7.5rem] leading-none mt-0 flex justify-end pr-32 md:leading-none md:text-[5.9rem]">
-				designer
-			</h1>
+			<motion.div variants={container} initial="hidden" animate="show">
+				<motion.h1 variants={item} className="mt-20 text-[#C8B2B3] font-bold xl:text-9xl xl:mt-12 md:text-8xl">aiturgan talant</motion.h1>
+				<motion.h1 variants={item} className="mt-20 text-[#A6A0A0] font-bold xl:text-[7.8rem] xl:leading-none xl:mt-0 flex justify-center md:text-[5.9rem]  md:leading-3">
+					software engineer
+				</motion.h1>
+				<motion.h1 variants={item} className="mt-20 text-[#626F63] font-bold xl:text-[7.5rem] xl:leading-none xl:mt-0 flex justify-end pr-32 md:leading-none md:text-[5.9rem]">
+					designer
+				</motion.h1>
+			</motion.div>
+			
 
-			<div className="flex gap-40 ">
-				<div className="pt-40 pl-40">
-					<svg width="270" height="270" viewBox="0 0 270 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<motion.div variants={container} initial="hidden" animate="show" className="flex gap-40 ">
+				<motion.div  variants={item} className="pt-40 pl-40">
+					<svg  width="270" height="270" viewBox="0 0 270 270" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M272 204.5L137 137L2 204.5L137 272L272 204.5Z" fill="#443D19" stroke="#443D19" stroke-width="2.31056" stroke-miterlimit="1" />
 						<path d="M272 204.5L137 137V2L272 69.4999V204.5Z" fill="#897A32" stroke="#443D19" stroke-width="2.31056" stroke-miterlimit="1" />
 						<path d="M137 137L2 204.5V69.4999L137 2V137Z" fill="#897A32" stroke="#443D19" stroke-width="2.31056" stroke-miterlimit="1" />
@@ -34,8 +82,8 @@ export default function Home() {
 							stroke-miterlimit="1"
 						/>
 					</svg>
-				</div>
-				<div className="pb-16 pl-8 lg:">
+				</motion.div>
+				<motion.div  variants={item}  className="pb-16 pl-8 lg:">
 					<svg width="339" height="338" viewBox="0 0 344 338" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M1.88701 89.9493L175.482 171.5L346.336 84.3502L172.74 2.79956L1.88701 89.9493Z"
@@ -80,8 +128,8 @@ export default function Home() {
 							stroke-miterlimit="1"
 						/>
 					</svg>
-				</div>
-				<div className="pt-12 pl-10">
+				</motion.div>
+				<motion.div variants={item}  className="pt-12 pl-10">
 					<svg width="636" height="460" viewBox="0 0 636 460" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M637 297L329 143L1 307L309 461L637 297Z" fill="#443D19" stroke="#443D19" stroke-miterlimit="1" />
 						<path d="M637 297L329 143V1L637 155V297Z" fill="#897A32" stroke="#443D19" stroke-miterlimit="1" />
@@ -90,8 +138,8 @@ export default function Home() {
 						<path d="M309 461L637 297V155L309 319V461Z" fill="#B6A342" stroke="#443D19" stroke-miterlimit="1" />
 						<path d="M637 155L329 1L1 165L309 319L637 155Z" fill="#E4CC53" stroke="#443D19" stroke-miterlimit="1" />
 					</svg>
-				</div>
-			</div>
+				</motion.div>
+			</motion.div>
 		</main>
 	);
 }
