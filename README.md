@@ -1,5 +1,3 @@
-<pre>
-	
 # Portfolio Website
 
 Simple overview of use/purpose.
@@ -60,4 +58,3 @@ code blocks for commands
 Inspiration, code snippets, etc.
 -
 
-</pre>
