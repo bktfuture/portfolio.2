@@ -1,0 +1,8 @@
+* {
+	box-sizing: border-box;
+}
+
+.containerVid {
+	width: 100vh;
+	height: 100vh;
+}
